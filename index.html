@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Wine&Cheese</title>
+	<link rel="stylesheet" href="styles/styles.css">
+	<link href='https://fonts.googleapis.com/css?family=Great+Vibes|Lato:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://npmcdn.com/flickity@1.1/dist/flickity.min.css">
+</head>
+<body>
+	
+	<header>
+		<div class="wrapper">
+			<h1>Wine <span>&</span> Cheese Pairing</h1>
+			<!-- <h2>Find the perfect pair!</h2> -->
+		</div>
+	</header>
+	<section class="cheeseCategory">
+		<div class="wrapper" novalidate>
+			<h2>Select Your Cheese</h2>
+			<form action="" name="selectCheese">
+
+				<input type="radio" id="soft" name="category" data-cat="soft" required="required">
+				<label for="soft" class="card">
+
+					<div class="front">
+						<h3>Soft</h3>
+						<p>Boursin</p>
+						<p>Brie</p>
+						<p>Camembert</p>
+					</div>
+					<div class="back">
+						<h3>Soft</h3>
+						<p>Boursin</p>
+						<p>Brie</p>
+						<p>Camembert</p>
+					</div>
+				</label>
+
+				<input type="radio" id="semiSoft" name="category" data-cat="semiSoft" required="required">
+				<label for="semiSoft" class="card">
+					<div class="front">
+						<h3>Semi-Soft</h3>
+						<p>Gruyere</p>
+						<p>Havarti</p>
+						<p>Monterey Jack</p>
+						<p>Muenster</p>
+					</div>
+					<div class="back">
+						<h3>Semi-Soft</h3>
+						<p>Gruyere</p>
+						<p>Havarti</p>
+						<p>Monterey Jack</p>
+						<p>Muenster</p>
+					</div>
+				</label>
+
+				<input type="radio" id="firm" name="category" data-cat="firm" required="required">
+				<label for="firm" class="card">
+					<div class="front">
+						<h3>Firm</h3>
+						<p>Asiago</p>
+						<p>Parmesan</p>
+						<p>Provolone</p>
+						<p>Romano</p>
+					</div>
+					<div class="back">
+						<h3>Firm</h3>
+						<p>Asiago</p>
+						<p>Parmesan</p>
+						<p>Provolone</p>
+						<p>Romano</p>
+					</div>
+				</label>
+
+				<input type="radio" id="semiFirm" name="category" data-cat="semiFirm" required="required">
+				<label for="semiFirm" class="card">
+					<div class="front">
+						<h3>Semi-Firm</h3>
+						<p>Cheddar</p>
+						<p>Chevre</p>
+						<p>Fontina</p>
+						<p>Gouda</p>
+					</div>
+					<div class="back">
+						<h3>Semi-Firm</h3>
+						<p>Cheddar</p>
+						<p>Chevre</p>
+						<p>Fontina</p>
+						<p>Gouda</p>
+					</div>
+				</label>
+
+				<input type="radio" id="blue" name="category" data-cat="blue" required="required">
+				<label for="blue" class="card">
+					<div class="front">
+						<h3>Blue</h3>
+						<p>Cambozola</p>
+						<p>Gorgonzola</p>
+						<p>Roquefort</p>
+					</div>
+					<div class="back">
+						<h3>Blue</h3>
+						<p>Cambozola</p>
+						<p>Gorgonzola</p>
+						<p>Roquefort</p>
+					</div>
+				</label>
+
+				<input type="radio" id="fresh" name="category" data-cat="fresh" required="required">
+				<label for="fresh" class="card">
+					<div class="front">
+						<h3>Fresh</h3>
+						<p>Goat</p>
+						<p>Mascarpone</p>
+						<p>Mozzarella</p>
+						<p>Ricotta</p>
+					</div>
+					<div class="back">
+					<h3>Fresh</h3>
+						<p>Goat</p>
+						<p>Mascarpone</p>
+						<p>Mozzarella</p>
+						<p>Ricotta</p>
+					</div>
+				</label>
+
+				<input type="submit" class ="cheeseSubmit" value="Find Paired Wines">
+			</form>
+			
+		</div>
+
+	</section>
+	<section class="wineCategories" id="wineCategories">
+		<div class="wrapper">
+			<h2>Select Your Preference</h2>
+			<div class="anotherWrapper clearfix">
+				<div id="wineTypeRed" class="wineTypeRed wineType clearfix" data-cat="red" data-winetype="red">
+					<h3 class="red">The Reds</h3>
+					<div class="redWineTypes">
+						<!-- append the wine types from the objects here -->
+					</div>
+				</div>
+				
+				<div id="wineTypeWhite" class="wineTypeWhite wineType" data-cat="white" data-winetype="white">
+					<h3 class="white">The Whites</h3>
+					<div class="whiteWineTypes">
+						<!-- append the wine types from the objects here -->
+					</div>
+				</div>
+			</div>
+
+	</section>
+	<section class="location" id="location">
+		<div class="wrapper">
+			<h2>Enter your location</h2>
+			<form action="" name = "locationForm">
+				<input type="text" name="location" class="city-postcd" placeholder="enter address or postal code">
+				<input type="submit" value="Find Store">
+			</form>
+			<p>or</p>
+			<button class="userCurrentLocation">Detect My Location</button>
+		</div>
+	</section>
+
+	<section class="stores" id="stores">
+		<div class="wrapper clearfix">
+			<h2>Your Nearest LCBO Locations</h2>
+			<div class="spinner">
+	 			<div class="cube1"></div>
+				<div class="cube2"></div>
+			</div>
+			<div class="map"></div>
+			<div class="storeDetailsWrap">
+				
+			</div>
+		</div>
+	</section>
+	<section class="wineResults" id="wineResults">
+		<div class="wrapper">
+			<h2>These wines are available at your selected store</h2>
+			<div class="flexslider">
+				<ul class="wineItems slides">
+					
+				</ul>
+	
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="wrapper">
+			<p>Data obtained via the LCBO and Google Maps APIs</p>
+			<p>Coded by <a href="http://www.tiffanyyao.com">Tiffany Yao</a>. Designed with inspiration from <a href="http://lucindawallace.com/winefind/">Lucinda Wallace</a></p>
+		</div>
+	</footer>
+	<div class="spinner">
+	 	<div class="cube1"></div>
+		<div class="cube2"></div>
+	</div>
+
+	<!-- Made with inspiration from Lucinda Wallace's (www.lucindawallace.com) Wine Find app -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="scripts/script.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+	<script src="plugins/flexslider/jquery.flexslider-min.js"></script>
+	
+</body>
+</html>
