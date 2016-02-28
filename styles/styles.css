@@ -98,7 +98,7 @@ input[type=submit]:hover, button:hover { border: 3px solid #F38D65; background: 
 
 .wineType.addBorder { border: 3px solid #F38D65; }
 
-header { background-image: url("../images/silver_scales/silver_scales.png"); background-repeat: repeat; padding: 3%; position: relative; color: #9CB1CE; border-bottom: 1px solid #D4D4D4; }
+header { background-image: url("../assets/silver_scales/silver_scales.png"); background-repeat: repeat; padding: 3%; position: relative; color: #9CB1CE; border-bottom: 1px solid #D4D4D4; }
 
 header h2 { position: relative; z-index: 2; color: #F38D65; margin-top: 0; }
 
@@ -108,7 +108,7 @@ input[name=category] + label { width: 125px; height: 200px; display: inline-bloc
 
 .wineCategories a { color: #293867; }
 
-.wineCategories .wineTypeRed, .wineCategories .wineTypeWhite { height: 250px; width: 200px; display: inline-block; border: 3px solid #C3C1C1; position: relative; background: url("../images/silver_scales/silver_scales.png"); }
+.wineCategories .wineTypeRed, .wineCategories .wineTypeWhite { height: 250px; width: 200px; display: inline-block; border: 3px solid #C3C1C1; position: relative; background: url("../assets/silver_scales/silver_scales.png"); }
 
 .wineCategories .wineTypeRed:hover, .wineCategories .wineTypeWhite:hover { border: 3px solid #F38D65; }
 

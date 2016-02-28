@@ -33,8 +33,6 @@ app.cheeseTypes = {
 
 
 app.displayMatchedWines = function(){
-	// console.log("entered displayed Matched Wines")
-	// console.log(app.cheeseTypes[0])
 	//passed in app.cheeseType from app.init();
 
 	for (type in app.cheeseTypes) {
@@ -62,31 +60,29 @@ app.displayMatchedWines = function(){
 		// var findRedWines = $("<a>").attr("href", "#location").data("wineType", "red").addClass("findStores").text("SEARCH");
 		// $(".whiteWineTypes").append(findWhiteWines);
 		// $(".redWineTypes").append(findRedWines);
-	}
+	};
 	appendMatches();
 
 	// when you click on Find My Store it will take the user to the location section to find out user's location
 	$(".wineType").on("click", function(e){
-		console.log("click");
 		e.preventDefault();
 		app.findUserLocation();
 		app.wineType = $(this).data("winetype")
-		console.log(app.wineType);
+		// console.log(app.wineType);
 		$("#location").show();
 		$("html, body").animate({
 		   scrollTop: $("#location").offset().top + 10
 		}, 500);
 	})
 
-} 
+};
 
 app.findWine = function(){
 	$(".storeDetailsWrap").on("click", ".checkInventory", 
 		function(e){
-			console.log(app.wineType);
+			// console.log(app.wineType);
 		e.preventDefault();
 		$(this).parent().css("border", "3px solid #F38D65");
-		// console.log("clicked the find store link");
 		//included a data attribute when we appended the check inventory link - tells us the store ID to pass onto the check inventory in this specific store function 
 		app.storeID = $(this).data("storeId");
 		// console.log(app.storeID);
@@ -94,20 +90,21 @@ app.findWine = function(){
 		if (app.wineType === "white") {
 			app.wineData = app.cheeseDataWhite;
 			//app.cheeseDataWhite is the array of the red wines for the selected cheese
-			console.log(app.wineData);
+			// console.log(app.wineData);
 		} else if(app.wineType === "red") {
 			app.wineData = app.cheeseDataRed;
 			//app.cheeseDataRed is the array of red wines for the selected cheese types
-			console.log(app.wineData);
+			// console.log(app.wineData);
 		}
 
 		//looping through app.wineData and making an ajax request for each value
 		app.wineData.forEach(function(val, i){
 			app.wineType = val;
+			// console.log(val)
 			app.drinkData();
 		})
-	})
-}
+	});
+};
 
 
 
@@ -144,22 +141,15 @@ app.drinkData = function(){
 				&& (data.result[item].stock_type != "VINTAGES")
 				&& (data.result[item].image_url != null)) {
 			app.allWineData.push(data.result[item]);
-			// app.allProductNos.push(data.result[item].id);
 			}
-		}
+		};
 		
 		if (!data.pager.is_final_page || app.page <= 3) {
-			// console.log(app.page);
 			app.page++;
 			app.drinkData();
 		} else {
-			// console.log(app.page);
-			// console.log("final page");
-			// app.filterList();
 			app.appendItems();
 		}
-
-
 	});
 };
 
@@ -169,8 +159,11 @@ app.appendItems = function() {
 	$("html, body").animate({
 	   scrollTop: $("#wineResults").offset().top + 10
 	}, 500);
-	// console.log(app.allWineData);
-	// console.log(app.allProductNos);
+
+	 // console.log(app.wineData);
+	 // console.log(app.wineType);
+	 // console.log(app.allWineData);
+
 	app.allWineData.forEach(function(val, i){
 		// if (i <= 14) {
 			// console.log(val,i);
@@ -181,16 +174,14 @@ app.appendItems = function() {
 			var image = $("<img>").attr("src", val.image_url)
 			var wineDetails = $('<div>').append(name, price);
 			var wineItem = $('<li class="clearfix wineItem">').append(image, wineDetails)
-			// var wineItem = $('<div class="clearfix wineItem">').append(wineDetails, image);
 			$(".wineItems").append(wineItem);
 			// setTimeout(function () { app.flexslider; }, 500)
 
 		// };
-	})
+	});
 	app.flexslider();
 	app.allWineData = [];
-
-}
+};
 
 app.flexslider = function(){
 
@@ -204,7 +195,7 @@ app.flexslider = function(){
 	    minItems: 2,
 	    maxItems: 4,
 	  });
-}
+};
 
 app.filteredWineList = [];
 app.filterList = function(){
@@ -227,42 +218,6 @@ app.filterList = function(){
 	// console.log(app.filteredWineList);
 };
 
-
-
-app.newNoDuplicateArray = [1234567890];
-app.duplicateFlag = 0;
-app.appendFinalWineItems = function(){
-// app.newNoDuplicateArray = [1234567890];
-// app.duplicateFlag = 0;
-	//use the product no's in app.checkStoreInventoryList (array)
-	//take the product details by looping in the product no inside app.allWineData (array with an array for each wine type search with objects for each item returned)
-	app.checkStoreInventoryList.forEach(function(inventoryVal, i){
-		app.allWineData.forEach(function(dataVal, i) {
-			for (item in dataVal) {	
-				if (inventoryVal === dataVal[item].id) {
-					app.newNoDuplicateArray.forEach(function(val, i) {
-						if (inventoryVal === val) {	
-							app.duplicateFlag = 1;
-							return;
-						} else {
-							return;
-						} // closes else
-					}); // closes checking for duplicates
-					app.newNoDuplicateArray.push(dataVal[item].id);
-						if(app.duplicateFlag === 0){	
-							var title = $("<h2>").text(dataVal[item].name);
-							var thing = $("<div>").append(title);
-							$(".wine-items").append(thing);
-							};
-				} else {
-				};// closes else
-			}; // closes object loop
-			return;
-		}); //closes allWineData  loop
-	}); //closes check store inventory function
-} // closes function
-
-
 app.findUserLocation = function(){
 	$("form[name=locationForm]").on("submit", function(e){
 		// console.log("click");
@@ -282,16 +237,14 @@ app.findUserLocation = function(){
 	$(".userCurrentLocation").on("click", function(e){
 		e.preventDefault();
 		app.getCurrentPosition(); //app.findStore will be called in this function
-
 		// console.log("click");
 		$("#stores").show();
 		$("html, body").animate({
 		   scrollTop: $("#stores").offset().top + 10
 		}, 500);
 		$(".spinner").show();
-
 	})
-}
+};
 
 
 app.findStore = function() {
@@ -328,16 +281,14 @@ app.findStore = function() {
 		        app.marker.setTitle("marker" + i);
 		        app.marker.setLabel((i+1).toString());
 		        app.markerArray.push(app.marker);
-		        //Function to create sidbar
-		        // use .data('markerId',i) when creating elements
 		    }
 		    // console.log(app.markerArray);
-		}
+		};
 		createMarkers(results.result);
 		// app.findHours(results.result);
 		app.displayStores(results.result);
-     });
-}
+     })
+};
 
 app.infoHover = function(){
 
@@ -351,10 +302,9 @@ app.infoHover = function(){
  				}, 600); // current maps duration of one bounce = 700(v3.13)
  				//look for the marker on the map and make it bounce
  			}
- 			
  		});
  	});
-}
+};
 
 
 app.displayStores = function(stores){
@@ -407,7 +357,7 @@ app.displayStores = function(stores){
 		var storeDetails = $("<div>").append(address, hours, checkInventory).addClass("storeDetails").data("markerId", "marker"+i);
 		$(".storeDetailsWrap").append(storeDetails);
 	})
-}
+};
 
 
 
@@ -418,17 +368,16 @@ app.addMarker = function(lat, lng){
 		draggable: false,
 		animation: google.maps.Animation.DROP,
 	})
-}
+};
+
 // GEOLOCATION
 
 app.loadMap = function(){
 	app.mapStyle = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"administrative.land_parcel","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"},{"color":"#052366"},{"saturation":"-70"},{"lightness":"85"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"},{"lightness":"-53"},{"weight":"1.00"},{"gamma":"0.98"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45},{"visibility":"on"}]},{"featureType":"road","elementType":"geometry","stylers":[{"saturation":"-18"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#57677a"},{"visibility":"on"}]}]
-	// app.mapStyle = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"simplified"},{"color":"#ff6a6a"},{"lightness":"0"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ee3123"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ee3123"}]},{"featureType":"road.highway","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ee3123"},{"lightness":"62"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"lightness":"75"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.bus","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"labels.icon","stylers":[{"weight":"0.01"},{"hue":"#ff0028"},{"lightness":"0"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#80e4d8"},{"lightness":"25"},{"saturation":"-23"}]}]
-	// console.log("entered load map")
 	
 	app.mapOptions = {
 		center: app.position,
-		zoom: 12,
+		zoom: 13,
 		scaleControl: false,
 		scrollwheel: false,
 		styles: app.mapStyle
@@ -441,9 +390,11 @@ app.loadMap = function(){
 	var marker = new google.maps.Marker({
 	  	map: app.map,
 	  	position: app.position,
-	  	icon: "home.png",
+	  	icon: "./assets/home.png",
+	  	optimized: false,
+	  	zIndex: 999 
 	});
-}
+};
 
 
 //get user location based on their current location
@@ -458,7 +409,7 @@ app.getCurrentPosition = function(){
 
 		// app.loadMap();
 	})
-}
+};
 
 //get user location based on city or postal code input
 app.geocodeAddress = function(geocoder, resultsMap) {
@@ -485,6 +436,12 @@ app.geocodeAddress = function(geocoder, resultsMap) {
   			alert("Please try your search again");
     	}
   	});
+};
+
+app.reset = function() {
+	$('#reset').click(function() {
+	    location.reload();
+	});
 }
 
 app.init = function(){
@@ -503,21 +460,13 @@ app.init = function(){
 	})
 
 	$(".wineType").on("click", function(){
-		console.log("blick");
 		$(this).css("border", "3px solid #F38D65");
 	})
 
 	app.findWine();
-
-	// app.loadMap();
-	// app.findStore();
-	// app.checkInventory();
-	// app.getCurrentPosition();
-	// app.findUserLocation();
 	app.infoHover();
-
-
-}
+	app.reset();
+};
 
 $(function() { // begin document ready
 	app.init();
