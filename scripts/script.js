@@ -180,11 +180,11 @@ app.appendItems = function() {
 			var name = $("<p>").text(val.name);
 			var price = parseInt(val.price_in_cents);
 				newPrice = (price/100).toFixed(2);
-				price = $("<p>").text("Price: $"+newPrice);
+				price = $("<p>").text("Price: $"+newPrice).addClass("orange");
 			var image = $("<img>").attr("src", val.image_url)
 			var wineDetails = $('<div>').append(name, price);
 			var wineItem = $('<li class="clearfix wineItem">').append(image, wineDetails)
-			$(".wineItems").append(wineItem);
+			$(".wineItems").append(wineItem).addClass("clearfix");
 			// setTimeout(function () { app.flexslider; }, 500)
 
 		// };
@@ -195,15 +195,16 @@ app.appendItems = function() {
 
 app.flexslider = function(){
 
+
 	$('.flexslider').flexslider({
 	    animation: "slide",
 	    animationLoop: false,
 	    slideShow: false,
 	    controlNav: false,
-	    itemWidth: 180,
-	    itemMargin: 8
+	    itemWidth: 210,
+	    itemMargin: 8,
 	    //minItems: 4
-	    //maxItems: 4,
+	    maxItems: 3
 	  });
 };
 

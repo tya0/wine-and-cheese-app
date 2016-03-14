@@ -79,6 +79,10 @@ input[type=submit], button, .button {
 	}
 }
 
+.orange {
+	color: $secondAccent;
+}
+
 
 .wineCategories, .location, .stores, .wineResults {
 	display: none;
@@ -284,11 +288,14 @@ input[type=radio]:checked + label .front {
 .wineResults {
 	padding-bottom: 5%;
 }
+
+
 .wineItems {
 	.wineItem {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
+		float: left;
+		// display: flex;
+		// flex-direction: row;
+		// align-items: center;
 
 	}
 	.wineDetails {
@@ -301,7 +308,7 @@ input[type=radio]:checked + label .front {
 }
 
 ul.flex-direction-nav {
-	margin: 3% 0 5% 0;
+	margin: 0 0 5% 0;
 	padding: 0;
 }
 li.flex-nav-next {
@@ -325,6 +332,11 @@ li.flex-nav-prev {
 	li {
 		width: 25%;
 	}
+}
+
+li div {
+    width: 200px;
+    margin: 0 auto;
 }
 
 footer {
