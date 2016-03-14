@@ -144,10 +144,7 @@ input[name=category] + label{
 		height: 250px;
 		width: 200px;
 		margin-bottom: 6%;
-		// display: inline-block;
 		border: 3px solid $thirdAccent;
-		position: relative;
-		background: url("../assets/silver_scales/silver_scales.png");
 		&:hover {
 			border: 3px solid $secondAccent;
 		}
@@ -160,26 +157,24 @@ input[name=category] + label{
 		.white {
 			color: #D4B32E;
 		}
-
-		.findStores {
-			position: absolute;
-			bottom: 25px;
-			right: 32%;
-			}
-		}
-	.wineTypeRed {
-		float:left;
-		a:hover {
-			color: #C51E1E;
-		}
-	}
-	.wineTypeWhite {
-		float: right;
-		a:hover {
-			color: #D4B32E;
-		}
 	}
 }
+input[name=wine]:checked + label{
+	border: 3px solid $secondAccent;
+}
+
+label.wine {
+	margin: 8% auto;
+	display:block;
+	width:300px;
+	text-align:center;
+	background: white;
+	border: 3px solid $mainAccent;
+	&:hover {
+		border: 3px solid $secondAccent;
+	}
+}
+
 
 input[name=location] {
 	width:250px;
@@ -220,6 +215,18 @@ button.userCurrentLocation {
 			border-bottom: none;
 		}
 	}
+}
+
+.wineItem {
+	max-width: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wineResults .wrapper {
+	padding-left: 2%;
+	padding-right: 2%;
 }
 
 span.rank {

@@ -136,21 +136,26 @@
 		<div class="wrapper">
 			<h2>Select Your Wine Preference</h2>
 			<div class="anotherWrapper clearfix">
-				<div id="wineTypeRed" class="wineTypeRed wineType clearfix" data-cat="red" data-winetype="red">
-					<h3 class="red">The Reds</h3>
-					<div class="redWineTypes">
-						<!-- append the wine types from the objects here -->
-					</div>
-				</div>
-				
-				<div id="wineTypeWhite" class="wineTypeWhite wineType" data-cat="white" data-winetype="white">
-					<h3 class="white">The Whites</h3>
-					<div class="whiteWineTypes">
-						<!-- append the wine types from the objects here -->
-					</div>
-				</div>
-				<a href="#" class="button">Go!</a>
+				<form action="" name="selectWine">
+					<input type="radio" id="red-wine" name="wine" class=".wineType" data-winetype="red" required="required">
+					<label for="red-wine" class="wine">
+						<h3 class="red">The Reds</h3>
+						<div class="redWineTypes">
+							<!-- append the wine types from the objects here -->
+						</div>
+					</label>
+
+					<input type="radio" id="white-wine" class=".wineType" name="wine" data-winetype="white" required="required">
+					<label for="white-wine" class="wine">
+						<h3 class="white">The Whites</h3>
+						<div class="whiteWineTypes">
+							<!-- append the wine types from the objects here -->
+						</div>
+					</label>
+					<input type="submit" value="Go!" class="wine-go">
+				</form>
 			</div>
+		</div>
 
 	</section>
 	<section class="location" id="location">

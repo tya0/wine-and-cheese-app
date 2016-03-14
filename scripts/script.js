@@ -63,18 +63,29 @@ app.displayMatchedWines = function(){
 	};
 	appendMatches();
 
-	// when you click on Find My Store it will take the user to the location section to find out user's location
-	$(".wineType").on("click", function(e){
+	// when you click on Go it will take the user to the location section to find out user's location
+	
+	// $(".wineType").on("click", function(e){
+	// 	e.preventDefault();
+	// 	app.findUserLocation();
+	// 	app.wineType = $(this).data("winetype")
+	// 	$("#location").show();
+	// 	$("html, body").animate({
+	// 	   scrollTop: $("#location").offset().top + 10
+	// 	}, 500);
+	// })
+
+
+	$("form[name=selectWine]").on("submit", function(e){
 		e.preventDefault();
 		app.findUserLocation();
-		app.wineType = $(this).data("winetype")
-		// console.log(app.wineType);
+		app.wineType = $("input[name=wine]:checked").data("winetype")
+		console.log(app.wineType);
 		$("#location").show();
 		$("html, body").animate({
 		   scrollTop: $("#location").offset().top + 10
 		}, 500);
 	})
-
 };
 
 app.findWine = function(){
@@ -190,10 +201,10 @@ app.flexslider = function(){
 	    animationLoop: false,
 	    slideShow: false,
 	    controlNav: false,
-	    itemWidth: 195,
-	    itemMargin: 8,
-	    minItems: 2,
-	    maxItems: 4,
+	    itemWidth: 210,
+	    itemMargin: 4,
+	    minItems: 4,
+	    //maxItems: 4,
 	  });
 };
 
@@ -359,8 +370,6 @@ app.displayStores = function(stores){
 	})
 };
 
-
-
 app.addMarker = function(lat, lng){
 	app.marker = new google.maps.Marker({ 
 		position: new google.maps.LatLng(lat, lng),
@@ -406,7 +415,6 @@ app.getCurrentPosition = function(){
 		app.position = {lat : app.lat, lng : app.lng};
 		// console.log(app.position);
 		app.findStore();
-
 		// app.loadMap();
 	})
 };
@@ -457,10 +465,6 @@ app.init = function(){
 		   scrollTop: $("#wineCategories").offset().top + 10
 		}, 500);
 
-	})
-
-	$(".wineType").on("click", function(){
-		$(this).css("border", "3px solid #F38D65");
 	})
 
 	app.findWine();

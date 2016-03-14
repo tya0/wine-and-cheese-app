@@ -112,7 +112,7 @@ input[name=category] + label { width: 125px; height: 200px; display: inline-bloc
 
 .wineCategories a.button:hover { color: #5D5C5C; }
 
-.wineCategories .wineTypeRed, .wineCategories .wineTypeWhite { height: 250px; width: 200px; margin-bottom: 6%; border: 3px solid #C3C1C1; position: relative; background: url("../assets/silver_scales/silver_scales.png"); }
+.wineCategories .wineTypeRed, .wineCategories .wineTypeWhite { height: 250px; width: 200px; margin-bottom: 6%; border: 3px solid #C3C1C1; }
 
 .wineCategories .wineTypeRed:hover, .wineCategories .wineTypeWhite:hover { border: 3px solid #F38D65; }
 
@@ -122,15 +122,11 @@ input[name=category] + label { width: 125px; height: 200px; display: inline-bloc
 
 .wineCategories .wineTypeRed .white, .wineCategories .wineTypeWhite .white { color: #D4B32E; }
 
-.wineCategories .wineTypeRed .findStores, .wineCategories .wineTypeWhite .findStores { position: absolute; bottom: 25px; right: 32%; }
+input[name=wine]:checked + label { border: 3px solid #F38D65; }
 
-.wineCategories .wineTypeRed { float: left; }
+label.wine { margin: 8% auto; display: block; width: 300px; text-align: center; background: white; border: 3px solid #9CB1CE; }
 
-.wineCategories .wineTypeRed a:hover { color: #C51E1E; }
-
-.wineCategories .wineTypeWhite { float: right; }
-
-.wineCategories .wineTypeWhite a:hover { color: #D4B32E; }
+label.wine:hover { border: 3px solid #F38D65; }
 
 input[name=location] { width: 250px; color: #F38D65; padding: 5px 8px; }
 
@@ -149,6 +145,10 @@ button.userCurrentLocation { margin-top: 0; }
 .stores .storeDetailsWrap .storeDetails a:hover { color: #293867; }
 
 .stores .storeDetailsWrap .storeDetails:last-child { border-bottom: none; }
+
+.wineItem { max-width: 25%; display: block; margin-left: auto; margin-right: auto; }
+
+.wineResults .wrapper { padding-left: 2%; padding-right: 2%; }
 
 span.rank { color: #F38D65; font-weight: bold; }
 
