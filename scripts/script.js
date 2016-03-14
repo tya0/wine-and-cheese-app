@@ -80,7 +80,6 @@ app.displayMatchedWines = function(){
 		e.preventDefault();
 		app.findUserLocation();
 		app.wineType = $("input[name=wine]:checked").data("winetype")
-		console.log(app.wineType);
 		$("#location").show();
 		$("html, body").animate({
 		   scrollTop: $("#location").offset().top + 10
@@ -201,9 +200,9 @@ app.flexslider = function(){
 	    animationLoop: false,
 	    slideShow: false,
 	    controlNav: false,
-	    itemWidth: 210,
-	    itemMargin: 4,
-	    minItems: 4,
+	    itemWidth: 180,
+	    itemMargin: 8
+	    //minItems: 4
 	    //maxItems: 4,
 	  });
 };

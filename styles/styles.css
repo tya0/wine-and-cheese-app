@@ -84,7 +84,7 @@ h1 { position: relative; z-index: 2; color: #293867; text-transform: uppercase; 
 
 h1 span { color: #F38D65; }
 
-h2 { text-transform: uppercase; color: #293867; font-size: 28px; font-size: 2.8rem; margin-bottom: 5%; }
+h2 { text-transform: uppercase; color: #293867; font-size: 28px; font-size: 2.8rem; margin-bottom: 5%; margin-top: 0; }
 
 input[type=radio] { display: none; }
 
@@ -96,7 +96,7 @@ input[type=submit]:hover, button:hover, .button:hover { border: 3px solid #F38D6
 
 .wineCategories, .location, .stores, .wineResults { display: none; }
 
-.wrapper { max-width: 980px; width: 100%; margin: 0 auto; text-align: center; padding: 5%; border: 5px solid #5D5C5C; background: #F7F7F7; }
+.wrapper { max-width: 980px; width: 100%; margin: 0 auto; text-align: center; padding: 5%; border: 5px solid #5D5C5C; background: #F7F7F7; border-radius: 10px; }
 
 .wineType.addBorder { border: 3px solid #F38D65; }
 
@@ -136,7 +136,7 @@ button.userCurrentLocation { margin-top: 0; }
 
 .stores .storeDetailsWrap { width: 47%; float: right; text-align: left; }
 
-.stores .storeDetailsWrap .storeDetails { padding: 0 5%; margin-bottom: 5%; border-left: 1px solid black; }
+.stores .storeDetailsWrap .storeDetails { padding: 3% 5%; border-left: 1px solid black; }
 
 .stores .storeDetailsWrap .storeDetails p { margin: 0; line-height: 28px; }
 
@@ -182,17 +182,27 @@ input[type=radio]:checked + label .front { background: #F38D65; }
 
 .wineItems img { height: 200px; border: 1px solid #D4D4D4; }
 
-li.flex-nav-next { float: right; text-transform: uppercase; }
+ul.flex-direction-nav { margin: 3% 0 5% 0; padding: 0; }
+
+li.flex-nav-next { float: right; text-transform: uppercase; text-align: right; }
+
+li.flex-nav-next a { float: right; }
 
 li.flex-nav-prev { float: left; text-transform: uppercase; }
+
+li.flex-nav-prev a { float: left; }
 
 .flexslider { width: 100%; }
 
 .flexslider li { width: 25%; }
 
-footer .wrapper { padding: 1%; }
+footer .wrapper { padding: 3%; }
 
-footer .wrapper p { font-size: 6px; font-size: 0.6rem; margin: 0; }
+footer .wrapper #reset { padding: 3%; }
+
+footer .wrapper p { font-size: 6px; font-size: 0.6rem; margin: 2% 0 0 0 x; }
+
+footer .wrapper p:first-child { margin-top: 3%; }
 
 .spinner { display: none; margin: 100px auto; width: 40px; height: 40px; position: relative; }
 
@@ -221,9 +231,11 @@ footer .wrapper p { font-size: 6px; font-size: 0.6rem; margin: 0; }
   h3 { font-size: 18px; font-size: 1.8rem; }
   p { font-size: 14px; font-size: 1.4rem; }
   .card .front p { display: block; }
-  .card .back h3 { display: block; } }
+  .card .back h3 { display: block; }
+  .wineItem { max-width: 33%; }
+  .wineItem img { height: 180px; } }
 
-@media (max-width: 480px) { h1 { font-size: 45px; font-size: 4.5rem; }
+@media (max-width: 600px) { h1 { font-size: 45px; font-size: 4.5rem; }
   .wrapper { width: 95%; padding: 5% 0; }
   .wineCategories .anotherWrapper { width: 90%; padding: 0 3%; }
   .wineCategories .wineTypeRed, .wineCategories .wineTypeWhite { width: 150px; }

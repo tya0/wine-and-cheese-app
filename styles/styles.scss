@@ -50,6 +50,7 @@ h2 {
 	color: $h2;
 	@include fontSizer(28);
 	margin-bottom:5%;
+	margin-top: 0;
 }
 
 input[type=radio] {
@@ -91,6 +92,7 @@ input[type=submit], button, .button {
 	padding: 5%;
 	border: 5px solid $text;
 	background: $bg;
+	border-radius: 10px;
 }
 
 .wineType.addBorder {
@@ -197,8 +199,7 @@ button.userCurrentLocation {
 		float: right;
 		text-align: left;
 		.storeDetails {
-			padding: 0 5%;
-			margin-bottom: 5%;
+			padding: 3% 5%;
 			border-left: 1px solid black;
 			p {
 				margin: 0;
@@ -298,13 +299,25 @@ input[type=radio]:checked + label .front {
 		border: 1px solid #D4D4D4;
 	}
 }
+
+ul.flex-direction-nav {
+	margin: 3% 0 5% 0;
+	padding: 0;
+}
 li.flex-nav-next {
     float: right;
     text-transform: uppercase;
+    text-align: right;
+    a {
+    	float: right;
+    }
 }
 li.flex-nav-prev {
     float: left;
     text-transform: uppercase;
+    a {
+    	float: left;
+    }
 }
 
 .flexslider {
@@ -316,10 +329,16 @@ li.flex-nav-prev {
 
 footer {
 	.wrapper {
-		padding:1%;
+		padding:3%;
+		#reset {
+			padding: 3%;
+		}
 		p {	
 		@include fontSizer(6);
-		margin: 0;
+		margin: 2% 0 0 0 x;
+		}
+		p:first-child {
+			margin-top: 3%;
 		}
 	}
 }
@@ -400,9 +419,15 @@ footer {
 			display: block;
 		}
 	}
+	.wineItem {
+		max-width: 33%;
+	    img {
+			height: 180px;
+	    }
+	}
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
 	h1 {
 		@include fontSizer(45);
 	}
