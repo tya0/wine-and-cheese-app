@@ -160,9 +160,9 @@ input[type=radio]:checked + label .front { background: #F38D65; }
 
 .card h3 { text-transform: uppercase; }
 
-.card:hover .back { -webkit-transform: rotateY(0); }
+.card:hover .back { -webkit-transform: rotateY(0); transform: rotateY(0); }
 
-.card:hover .front { -webkit-transform: rotateY(-180deg); }
+.card:hover .front { -webkit-transform: rotateY(-180deg); transform: rotateY(-180deg); }
 
 .card .front, .card .back { position: absolute; height: 100%; width: 100%; -webkit-transition: all 0.5s; transition: all 0.5s; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 
@@ -170,7 +170,7 @@ input[type=radio]:checked + label .front { background: #F38D65; }
 
 .card .front p { display: none; }
 
-.card .back { background: white; border: 3px solid #F38D65; -webkit-transform: rotateY(180deg); }
+.card .back { background: white; border: 3px solid #F38D65; -webkit-transform: rotateY(180deg); transform: rotateY(180deg); }
 
 .card .back h3 { display: none; }
 
