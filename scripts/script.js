@@ -357,9 +357,9 @@ app.displayStores = function(stores){
 		convertOpenTime(openTime);
 		convertCloseTime(closeTime);
 		if (app.open == "12:00") {
-			var hours = $("<p>").text("Open today from " + app.open + " pm to " + app.close + " pm");
+			var hours = $("<p>").text("Open today from " + app.open + "pm to " + app.close + "pm");
 		} else {
-			var hours = $("<p>").text("Open today from " + app.open + " am to " + app.close + " pm");
+			var hours = $("<p>").text("Open today from " + app.open + "am to " + app.close + "pm");
 		}
 
 		//adding data attribute so we can grab it when we check inventory
