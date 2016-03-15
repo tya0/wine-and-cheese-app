@@ -447,8 +447,12 @@ app.geocodeAddress = function(geocoder, resultsMap) {
 };
 
 app.reset = function() {
-	$('#reset').click(function() {
-	    location.reload();
+	$('#reset').click(function(e) {
+		e.preventDefault();
+		// url = window.location.href;
+		// window.location.href = url;
+	 //   // location.reload();
+	 document.location.reload();
 	});
 }
 
