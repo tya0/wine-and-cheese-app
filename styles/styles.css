@@ -184,7 +184,7 @@ input[type=radio]:checked + label .front { background: #F38D65; }
 
 .wineItems img { height: 200px; border: 1px solid #D4D4D4; }
 
-ul.flex-direction-nav { margin: 0 0 5% 0; padding: 0; }
+ul.flex-direction-nav { margin: 0 0 12% 0; padding: 0; }
 
 li.flex-nav-next { float: right; text-transform: uppercase; text-align: right; }
 
@@ -202,13 +202,11 @@ li.wineItem div { width: 80%; margin: 0 auto; }
 
 li.wineItem div p { width: 80%; margin: 8px auto; }
 
+#reset { padding: 3%; color: #5D5C5C; text-transform: uppercase; font-size: 20px; font-size: 2rem; }
+
 footer .wrapper { padding: 3%; }
 
-footer .wrapper #reset { padding: 3%; }
-
-footer .wrapper p { font-size: 6px; font-size: 0.6rem; margin: 2% 0 0 0; }
-
-footer .wrapper p:first-child { margin-top: 3%; }
+footer .wrapper p { font-size: 6px; font-size: 0.6rem; margin: 0; }
 
 .spinner { display: none; margin: 100px auto; width: 40px; height: 40px; position: relative; }
 

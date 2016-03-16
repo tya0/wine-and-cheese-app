@@ -392,7 +392,7 @@ app.loadMap = function(){
 	var marker = new google.maps.Marker({
 	  	map: app.map,
 	  	position: app.position,
-	  	icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+	  	icon: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
 	  	//icon: "./assets/home.png",
 	  	optimized: false,
 	  	zIndex: 999 
@@ -418,12 +418,12 @@ app.geocodeAddress = function(geocoder) {
 	// need to check for an empty object - invalid entry 
 	geo = new google.maps.Geocoder();
   	geo.geocode({"address": app.cityPostCd}, function(results, status) {
-  		console.log(results);
+  		//console.log(results);
   		if ( results.length === 0) {
   			$(".error").fadeIn();
   			app.closeError();
   		} else {
-  			console.log("enter else");
+  			//console.log("enter else");
 			$("#stores").show();
 			$(".spinner").show();
   			$("html, body").animate({
@@ -432,7 +432,7 @@ app.geocodeAddress = function(geocoder) {
 	  		app.lat = results[0].geometry.location.lat();
 	  		app.lng = results[0].geometry.location.lng();
 	  		app.position = {lat : app.lat, lng : app.lng};
-	  		console.log(app.lat, app.lng);
+	  		//console.log(app.lat, app.lng);
 			if (status === google.maps.GeocoderStatus.OK) {
 	  		// console.log(app.lat, app.lng);
 	  			app.findStore(app.lat, app.lng);
@@ -456,6 +456,7 @@ app.reset = function() {
 		// url = window.location.href;
 		// window.location.href = url;
 	 //   // location.reload();
+	 $("form")[0].reset();
 	 document.location.reload();
 	});
 }
