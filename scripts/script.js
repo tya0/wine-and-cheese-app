@@ -201,10 +201,10 @@ app.flexslider = function(){
 	    animationLoop: false,
 	    slideShow: false,
 	    controlNav: false,
-	    itemWidth: 210,
-	    itemMargin: 8,
+	    itemWidth: 180,
+	    itemMargin: 0,
 	    //minItems: 4
-	    maxItems: 3
+	    maxItems: 4
 	  });
 };
 
@@ -231,18 +231,9 @@ app.filterList = function(){
 
 app.findUserLocation = function(){
 	$("form[name=locationForm]").on("submit", function(e){
-		// console.log("click");
 		e.preventDefault();
 		app.cityPostCd = $("input[type=text]").val();
-		// console.log(app.cityPostCd);
-		app.loadMap();
-		app.geocodeAddress(app.geocoder, app.map);
-		$("#stores").show();
-		$("html, body").animate({
-		   scrollTop: $("#stores").offset().top + 10
-		}, 500);
-		$(".spinner").show();
-		// app.findStore()
+		app.geocodeAddress(app.geocoder);
 	})
 
 	$(".userCurrentLocation").on("click", function(e){
@@ -256,7 +247,6 @@ app.findUserLocation = function(){
 		$(".spinner").show();
 	})
 };
-
 
 app.findStore = function() {
 
@@ -278,28 +268,31 @@ app.findStore = function() {
 		$(".spinner").hide();
 		// console.log(results);
 		app.storeInfo = results.result;
-
 		app.loadMap();
-
-		function createMarkers(markers) {
-			app.markerArray = [];
-			for (var i = 0; i < markers.length; i++) {
-		        app.addMarker({
-		            lat: markers[i].latitude,
-		            lng: markers[i].longitude,
-		            title: i,
-			        });
-		        app.marker.setTitle("marker" + i);
-		        app.marker.setLabel((i+1).toString());
-		        app.markerArray.push(app.marker);
-		    }
-		    // console.log(app.markerArray);
-		};
-		createMarkers(results.result);
+		app.createMarkers(results.result);
 		// app.findHours(results.result);
 		app.displayStores(results.result);
+		app.map.setCenter({
+			lat: app.lat,
+			lng: app.lng
+		});
      })
 };
+
+app.createMarkers = function(markers) {
+	app.markerArray = [];
+	for (var i = 0; i < markers.length; i++) {
+        app.addMarker({
+            lat: markers[i].latitude,
+            lng: markers[i].longitude,
+            title: i,
+	        });
+        app.marker.setTitle("marker" + i);
+        app.marker.setLabel((i+1).toString());
+        app.markerArray.push(app.marker);
+    }
+    // console.log(app.markerArray);
+}
 
 app.infoHover = function(){
 
@@ -399,12 +392,12 @@ app.loadMap = function(){
 	var marker = new google.maps.Marker({
 	  	map: app.map,
 	  	position: app.position,
-	  	icon: "./assets/home.png",
+	  	icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+	  	//icon: "./assets/home.png",
 	  	optimized: false,
 	  	zIndex: 999 
 	});
 };
-
 
 //get user location based on their current location
 app.getCurrentPosition = function(){
@@ -420,30 +413,41 @@ app.getCurrentPosition = function(){
 };
 
 //get user location based on city or postal code input
-app.geocodeAddress = function(geocoder, resultsMap) {
+app.geocodeAddress = function(geocoder) {
 
 	// need to check for an empty object - invalid entry 
-	app.map = new google.maps.Geocoder();
-  	app.map.geocode({"address": app.cityPostCd}, function(results, status) {
-  		// console.log(results);
-  		app.lat = results[0].geometry.location.lat();
-  		app.lng = results[0].geometry.location.lng();
-  		app.position = {lat : app.lat, lng : app.lng};
-
-		if (status === google.maps.GeocoderStatus.OK) {
-  			resultsMap.setCenter(results[0].geometry.location);
-  			var marker = new google.maps.Marker({
-    			map: resultsMap,
-    			position: app.position
-  			});
-
-  		// console.log(app.lat, app.lng);
-  		app.findStore(app.lat, app.lng);
-  			
-		} else {
-  			alert("Please try your search again");
-    	}
+	geo = new google.maps.Geocoder();
+  	geo.geocode({"address": app.cityPostCd}, function(results, status) {
+  		console.log(results);
+  		if ( results.length === 0) {
+  			$(".error").fadeIn();
+  			app.closeError();
+  		} else {
+  			console.log("enter else");
+			$("#stores").show();
+			$(".spinner").show();
+  			$("html, body").animate({
+		   	scrollTop: $("#stores").offset().top + 10
+			}, 500);
+	  		app.lat = results[0].geometry.location.lat();
+	  		app.lng = results[0].geometry.location.lng();
+	  		app.position = {lat : app.lat, lng : app.lng};
+	  		console.log(app.lat, app.lng);
+			if (status === google.maps.GeocoderStatus.OK) {
+	  		// console.log(app.lat, app.lng);
+	  			app.findStore(app.lat, app.lng);
+			} else {
+	  			alert("Please try your search again");
+	    	}
+	    }
   	});
+};
+
+app.closeError = function() {
+	$(".closeError").on("click", function(e) {
+		e.preventDefault();
+		$(".error").fadeOut();
+	})
 };
 
 app.reset = function() {
